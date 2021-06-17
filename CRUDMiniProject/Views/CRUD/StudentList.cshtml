@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CRUDMiniProject.Student>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2 class="text-center">Student List</h2>
+<div class="container">
+    <div class="row">
+        <input type="button" value="Register Student" class="btn btn-default" onclick='window.location.href = "@Url.Action("Students", "CRUD", routeValues: null)"'/>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Student Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone No</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelitem => item.StudentID)</td>
+                        <td>@Html.DisplayFor(modelitem => item.StudentName)</td>
+                        <td>@Html.DisplayFor(modelitem => item.Age)</td>
+                        <td>@Html.DisplayFor(modelitem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelitem => item.PhoneNo)</td>
+                        <td>@Html.DisplayFor(modelitem => item.Email)</td>
+                        <td>
+                            <input type="button" value="Details" class="btn btn-default" onclick='window.location.href = "@Url.Action("Details", "CRUD", new { StudentId = item.StudentID })"' />
+                            <input type="button" value="Delete" class="btn btn-default" onclick='window.location.href = "@Url.Action("Delete", "CRUD", new { StudentId = item.StudentID })"' />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
